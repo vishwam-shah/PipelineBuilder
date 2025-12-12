@@ -1,0 +1,227 @@
+/* NodeStyles.css - Modern, premium styling for all nodes */
+
+.base-node {
+  min-width: 220px;
+  min-height: 100px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 2px solid;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+.base-node:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+.node-header {
+  padding: 12px 16px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--node-color, #6366f1) 0%, var(--node-color-dark, #4f46e5) 100%);
+}
+
+.node-icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.node-title {
+  flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+}
+
+.node-content {
+  padding: 16px;
+  background: white;
+}
+
+.node-field {
+  margin-bottom: 12px;
+}
+
+.node-field:last-child {
+  margin-bottom: 0;
+}
+
+.node-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.node-input,
+.node-select,
+.node-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  background: #f9fafb;
+}
+
+.node-input:focus,
+.node-select:focus,
+.node-textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.node-textarea {
+  resize: vertical;
+  min-height: 60px;
+  font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+  line-height: 1.5;
+}
+
+.node-handle {
+  width: 20px;
+  height: 20px;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.node-handle:hover {
+  transform: scale(1.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-width: 4px;
+}
+
+/* Make handles always visible */
+.react-flow__handle {
+  width: 20px !important;
+  height: 20px !important;
+  border: 3px solid white;
+  border-radius: 50%;
+  background: #6366f1;
+  opacity: 1 !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.react-flow__handle:hover {
+  transform: scale(1.5);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.5);
+  border-width: 4px;
+}
+
+.react-flow__handle-connecting {
+  background: #10b981;
+  transform: scale(1.4);
+}
+
+.react-flow__handle-valid {
+  background: #10b981;
+}
+
+.react-flow__handle-invalid {
+  background: #ef4444;
+}
+
+.node-description {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-top: 8px;
+  padding: 8px;
+  background: #f3f4f6;
+  border-radius: 6px;
+}
+
+.variable-handle {
+  background: #10b981 !important;
+  border-color: white;
+}
+
+.variable-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .base-node {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border-color: #374151;
+  }
+
+  .node-content {
+    background: #1f2937;
+  }
+
+  .node-input,
+  .node-select,
+  .node-textarea {
+    background: #111827;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+
+  .node-input:focus,
+  .node-select:focus,
+  .node-textarea:focus {
+    background: #1f2937;
+    border-color: #6366f1;
+  }
+
+  .node-label {
+    color: #9ca3af;
+  }
+
+  .node-description {
+    background: #111827;
+    color: #9ca3af;
+  }
+}
+
+/* Animation for new nodes */
+@keyframes nodeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.base-node {
+  animation: nodeAppear 0.3s ease-out;
+}
